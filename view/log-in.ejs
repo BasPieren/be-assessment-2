@@ -1,0 +1,41 @@
+<% include head.ejs %>
+
+<header>
+
+  <a href="/">Home</a>
+
+  <section>
+
+    <% if (user) { %>
+      <a href=/log-out>Log out</a>
+    <% } else { %>
+      <a href="/log-in">Login</a>
+      <a href="/sign-up">Aanmelden</a>
+    <% } %>
+
+  </section>
+
+</header>
+
+<main>
+
+  <section>
+
+    <h1>Log in</h1>
+    <form action=/log-in method=post>
+
+      <label>Username</label>
+      <input name="username">
+
+      <label>Password</label>
+      <input name="password" type="password">
+
+      <button>Sign up</button>
+
+    </form>
+    
+  </section>
+
+</main>
+
+<% include script.ejs %>

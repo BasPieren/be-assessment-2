@@ -1,0 +1,33 @@
+<% include head.ejs %>
+
+<header>
+
+  <section>
+
+    <% if (user) { %>
+      <a href=/log-out>Log out</a>
+    <% } else { %>
+      <a href="/log-in">Login</a>
+      <a href="/sign-up">Aanmelden</a>
+    <% } %>
+
+  </section>
+
+</header>
+
+<main>
+
+<section>
+
+  <h2>Dashboard</h2>
+  <h3>Looking for Group</h3>
+
+  <% if (user) { %>
+    <p>Hallo <%= user.username %>!</p>
+  <% } %>
+
+</section>
+
+</main>
+
+<% include script.ejs %>

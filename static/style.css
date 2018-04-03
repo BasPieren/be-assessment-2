@@ -89,7 +89,7 @@ main{
   padding: 1.5em 3em;
 }
 
-main > p{
+main > section > p{
   margin: 1em 0;
 }
 

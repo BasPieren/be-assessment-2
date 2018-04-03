@@ -3,11 +3,22 @@ This is the repo for my assessment 2 project where I made a dynamic website usin
 
 ## Table of Contents
 * Description
+* Dependencies
 * Project Parts
 * Sources
 
 ## Description
 For this project is made an dynamic website where user can create an account, login and logout of that account and make and join groups that other users can join to form gaming groups.
+
+## Dependencies
+This project makes use of the following dependencies:
+
+* argon2
+* dotenv
+* ejs
+* express
+* express-session
+* mysql
 
 ## Project Parts
 Here you will find an overview of all the different parts of my project:
@@ -23,7 +34,7 @@ Here you will find an overview of all the different parts of my project:
 ### Join an group
 
 ## Sources
-These sources where used in the creation of this project:
+These sources where used in the creation of this project and how they work:
 
 https://github.com/cmda-be/course-17-18/tree/master/examples/mysql-server
 

@@ -24,13 +24,26 @@
     <h2>Aanmelden</h2>
     <form action=/sign-up method=post>
 
-      <label>Username</label>
+      <label>Gebruikersnaam</label>
       <input name="username">
 
-      <label>Password</label>
+      <label>Leeftijd</label>
+      <input name="age" type="number">
+
+      <label>Geslacht</label>
+      <input type="radio" name="gender" value="male"> Man
+      <input type="radio" name="gender" value="female"> Vrouw
+
+      <label>Omschrijving</label>
+      <textarea name="description" rows="8" cols="50"></textarea>
+
+      <label>Email</label>
+      <input name="email" type="email">
+
+      <label>Wachtwoord</label>
       <input name="password" type="password">
 
-      <button>Sign up</button>
+      <button>Aanmelden</button>
 
     </form>
 

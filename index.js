@@ -71,18 +71,22 @@ function signupForm(req, res) {
 // When the signup form carries out its action, start this function
 function signup(req, res, next) {
   var username = req.body.username;
+  var age = req.body.age;
+  var gender = req.body.gender;
+  var description = req.body.description;
+  var email = req.body.email;
   var password = req.body.password;
   var min = 8;
   var max = 160;
 
-  if (!username || !password) {
-    return res.status(400).send('Username or password are missing');
+  if (!email || !password) {
+    return res.status(400).send('Email of wachtwoord missen');
   }
 
   if (password.length < min || password.length > max) {
     return res.status(400).send(
-      'Password must be between ' + min +
-      ' and ' + max + ' characters'
+      'Je wachtwoord moet tussen de ' + min +
+      ' en ' + max + ' karakters zijn'
     )
   }
 
@@ -94,12 +98,19 @@ function signup(req, res, next) {
     } else if (data.length === 0) {
       argon2.hash(password).then(onhash, next)
     } else {
-      res.status(409).send('Username already in use')
+      res.status(409).send('Gebruikersnaam is al in gebruik')
     }
   }
 
   function onhash(hash) {
-    connection.query('INSERT INTO users SET ?', {username: username, hash: hash}, oninsert)
+    connection.query('INSERT INTO users SET ?', {
+      username: username,
+      age:age,
+      gender:gender,
+      description:description,
+      email:email,
+      hash: hash},
+      oninsert)
 
     function oninsert(err) {
       if (err) {
@@ -131,7 +142,7 @@ function login(req, res, next) {
   var password = req.body.password
 
   if (!username || !password) {
-    return res.status(400).send('Username or password are missing')
+    return res.status(400).send('Email of wachtwoord missen')
   }
 
   connection.query('SELECT * FROM users WHERE username = ?', username, done)

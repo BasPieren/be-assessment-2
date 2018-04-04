@@ -1,4 +1,4 @@
-# be-assessment-2 | Looking for Group (LFG)
+# be-assessment-2 | Dating App
 This is the repo for my assessment 2 project where I made a dynamic website using Git, Node.js, Express, SQL and MSQL.
 
 ## Table of Contents
@@ -8,7 +8,7 @@ This is the repo for my assessment 2 project where I made a dynamic website usin
 * Sources
 
 ## Description
-For this project is made an dynamic website where user can create an account, login and logout of that account and make and join groups that other users can join to form gaming groups.
+For this project I made an dynamic dating app website where user can create an account, login and logout of that account, Make changes to their account and find matches based on their profile settings.
 
 ## Dependencies
 This project makes use of the following dependencies:

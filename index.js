@@ -5,15 +5,16 @@ https://docs.google.com/presentation/d/1BHMqO9UV5ePt29n8cnjaznvye8Gu_HrdzhzC3h5r
 */
 
 // Loads in all the dependencies
-var express = require('express')
-var session = require('express-session')
+var express = require('express') // Loads in express, a node.js framework
+var session = require('express-session') // Loads in express session which uses cookies to store a users session
 var bodyParser = require('body-parser')
 var mysql = require('mysql')
-var argon2 = require('argon2')
+var argon2 = require('argon2') // Loads in argon 2 which hashes a users password for protection
+var multer = require('multer') // Loads in multer which makes it possible to upload files
 
 require('dotenv').config()
 
-// Connect to the database
+// Connect to the database with the information inside the .env file
 var connection = mysql.createConnection({
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
@@ -22,6 +23,9 @@ var connection = mysql.createConnection({
 })
 
 connection.connect()
+
+// Places all the uploaded images in the 'static/upload/' folder
+var upload = multer({dest: 'static/upload/'})
 
 // Here we direct express to the correct callbacks
 express()
@@ -32,17 +36,47 @@ express()
     saveUninitialized: true,
     secret: process.env.SESSION_SECRET
   }))
+
   .set('view engine', 'ejs')
   .set('views', 'view')
-  .get('/', dashboard)
+
+  .get('/', start)
   .get('/sign-up', signupForm)
-  .post('/sign-up', signup)
   .get('/log-in', loginForm)
-  .post('/log-in', login)
   .get('/log-out', logout)
+  .get('/profile', profile)
+  .get('/dashboard', dashboard)
+
+  .post('/sign-up', upload.single('cover'), signup)
+  .post('/log-in', login)
+
   .listen(3000)
 
-// When the browser calls for '/', send back dashboard.ejs
+// When the browser calls for '/', send back start.ejs
+function start(req, res) {
+  connection.query('SELECT * FROM users', done) // Connect to the database with done as callback
+
+  function done(err, data) {
+    if (err) {
+      next(err)
+    } else {
+      res.render('start.ejs', {user: req.session.user})
+    }
+  }
+}
+
+function profile(req, res) {
+  connection.query('SELECT * FROM users', done)
+
+  function done(err, data) {
+    if (err) {
+      next(err)
+    } else {
+      res.render('profile.ejs', {user: req.session.user})
+    }
+  }
+}
+
 function dashboard(req, res) {
   connection.query('SELECT * FROM users', done)
 
@@ -50,7 +84,7 @@ function dashboard(req, res) {
     if (err) {
       next(err)
     } else {
-      res.render('dashboard.ejs', {data: data, user: req.session.user})
+      res.render('dashboard.ejs', {user: req.session.user})
     }
   }
 }
@@ -63,7 +97,7 @@ function signupForm(req, res) {
     if (err) {
       next(err)
     } else {
-      res.render('sign-up.ejs', {data: data, user: req.session.user})
+      res.render('sign-up.ejs', {user: req.session.user})
     }
   }
 }
@@ -74,6 +108,7 @@ function signup(req, res, next) {
   var age = req.body.age;
   var gender = req.body.gender;
   var description = req.body.description;
+  var picture = req.file ? req.file.filename : null;
   var email = req.body.email;
   var password = req.body.password;
   var min = 8;
@@ -108,6 +143,7 @@ function signup(req, res, next) {
       age:age,
       gender:gender,
       description:description,
+      picture:picture,
       email:email,
       hash: hash},
       oninsert)
@@ -116,8 +152,10 @@ function signup(req, res, next) {
       if (err) {
         next(err)
       } else {
-        req.session.user = {username: username}
-        res.redirect('/')
+        req.session.user = {
+          username: username
+        };
+        res.render('dashboard.ejs', {user: req.session.user})
       }
     }
   }
@@ -131,7 +169,7 @@ function loginForm(req, res) {
     if (err) {
       next(err)
     } else {
-      res.render('log-in.ejs', {data: data, user: req.session.user})
+      res.render('log-in.ejs', {user: req.session.user})
     }
   }
 }
@@ -160,8 +198,10 @@ function login(req, res, next) {
 
     function onverify(match) {
       if (match) {
-        req.session.user = {username: user.username};
-        res.redirect('/')
+        req.session.user = {
+          username: username
+        };
+        res.render('dashboard.ejs', {user: req.session.user})
       } else {
         res.status(401).send('Password incorrect')
       }

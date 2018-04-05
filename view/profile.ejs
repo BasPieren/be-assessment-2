@@ -2,6 +2,8 @@
 
 <header>
 
+  <a href="/dashboard">Home</a>
+
   <section>
 
     <% if (user) { %>
@@ -17,9 +19,13 @@
 
 <section>
 
-  <h2>Dashboard</h2>
+  <h2>Profiel</h2>
+
   <% if (user) { %>
-    <p>Welkom <%= user.username %>!</p>
+    <img src="/upload/<%= user.picture %>" alt="Profile picture">
+    <p><span>Naam:</span> <%= user.username %></p>
+    <p><span>Leeftijd:</span> <%= user.age %></p>
+    <p><span>Omschrijving:</span> <%= user.description %></p>
   <% } %>
 
 </section>

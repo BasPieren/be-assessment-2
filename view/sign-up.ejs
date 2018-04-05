@@ -2,18 +2,7 @@
 
 <header>
 
-  <a href="/">Home</a>
 
-  <section>
-
-    <% if (user) { %>
-      <a href=/log-out>Log out</a>
-    <% } else { %>
-      <a href="/log-in">Login</a>
-      <a href="/sign-up">Aanmelden</a>
-    <% } %>
-
-  </section>
 
 </header>
 
@@ -22,7 +11,9 @@
   <section>
 
     <h2>Aanmelden</h2>
-    <form action=/sign-up method=post>
+    <p>Maak een account aan.</p>
+
+    <form action=/sign-up method=post enctype=multipart/form-data>
 
       <label>Gebruikersnaam</label>
       <input name="username">
@@ -33,9 +24,13 @@
       <label>Geslacht</label>
       <input type="radio" name="gender" value="male"> Man
       <input type="radio" name="gender" value="female"> Vrouw
+      <input type="radio" name="gender" value="female"> Anders
 
       <label>Omschrijving</label>
       <textarea name="description" rows="8" cols="50"></textarea>
+
+      <label>Profiel Foto</label>
+      <input name=cover type=file accept=image/*>
 
       <label>Email</label>
       <input name="email" type="email">
@@ -43,7 +38,7 @@
       <label>Wachtwoord</label>
       <input name="password" type="password">
 
-      <button>Aanmelden</button>
+      <button class="default_button button_color_pink">Aanmelden</button>
 
     </form>
 

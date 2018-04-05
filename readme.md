@@ -46,6 +46,7 @@ To start the server enter the following:
 * [ejs](https://www.npmjs.com/package/ejs)
 * [express](https://www.npmjs.com/package/express)
 * [express-session](https://www.npmjs.com/package/express-sessions)
+* [nodemon](https://www.npmjs.com/package/nodemon)
 * [mysql](https://www.npmjs.com/package/mysql)
 * [multer](https://www.npmjs.com/package/multer)
 

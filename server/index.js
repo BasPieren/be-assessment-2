@@ -65,30 +65,6 @@ function start(req, res) {
   }
 }
 
-function profile(req, res) {
-  connection.query('SELECT * FROM users', done)
-
-  function done(err, data) {
-    if (err) {
-      next(err)
-    } else {
-      res.render('profile.ejs', {user: req.session.user})
-    }
-  }
-}
-
-function dashboard(req, res) {
-  connection.query('SELECT * FROM users', done)
-
-  function done(err, data) {
-    if (err) {
-      next(err)
-    } else {
-      res.render('dashboard.ejs', {user: req.session.user})
-    }
-  }
-}
-
 // When the browser calls for '/sign-up', send back sign-up.ejs
 function signupForm(req, res) {
   connection.query('SELECT * FROM users', done)
@@ -152,9 +128,7 @@ function signup(req, res, next) {
       if (err) {
         next(err)
       } else {
-        req.session.user = {
-          username: username
-        };
+        req.session.user = {username: username};
         res.render('dashboard.ejs', {user: req.session.user})
       }
     }
@@ -179,10 +153,6 @@ function login(req, res, next) {
   var username = req.body.username
   var password = req.body.password
 
-  if (!username || !password) {
-    return res.status(400).send('Email of wachtwoord missen')
-  }
-
   connection.query('SELECT * FROM users WHERE username = ?', username, done)
 
   function done(err, data) {
@@ -198,13 +168,35 @@ function login(req, res, next) {
 
     function onverify(match) {
       if (match) {
-        req.session.user = {
-          username: username
-        };
+        req.session.user = {username: username};
         res.render('dashboard.ejs', {user: req.session.user})
       } else {
         res.status(401).send('Password incorrect')
       }
+    }
+  }
+}
+
+function dashboard(req, res) {
+  connection.query('SELECT * FROM users', done)
+
+  function done(err, data) {
+    if (err) {
+      next(err)
+    } else {
+      res.render('dashboard.ejs', {user: req.session.user})
+    }
+  }
+}
+
+function profile(req, res) {
+  connection.query('SELECT * FROM users', done)
+
+  function done(err, data) {
+    if (err) {
+      next(err)
+    } else {
+      res.render('profile.ejs', {user: req.session.user})
     }
   }
 }

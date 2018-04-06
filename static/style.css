@@ -86,11 +86,20 @@ header > a{
   color: #FF2E76;
   font-size: 1em;
   font-weight: 500;
+  text-decoration: none;
   transition: all 0.3s;
 }
 
 header > a:hover{
   color: #d52360;
+}
+
+header > a:before{
+  margin: 0 0.5em 0 0;
+  content: url(/upload/arrow_left_icon_black.svg);
+  display: inline-block;
+  width: 0.750em;
+  height: 0.750em;
 }
 
 header > section{
@@ -139,6 +148,12 @@ main > section {
   justify-content: space-around;
   margin: 0 auto;
   width: 20em;
+}
+
+main > section > img{
+  max-width: 100%;
+  width: auto;
+  height: auto;
 }
 
 main > section > form > label{

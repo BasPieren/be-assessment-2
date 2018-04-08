@@ -1,5 +1,5 @@
 # be-assessment-2 | Dating App
-This is the repo for my assessment 2 project where I made a dynamic website using Git, Node.js, Express, SQL and MSQL.
+This is the repo for my assessment 2 project where I made a dynamic website using Git, Node.js, Express, SQL and MYSQL.
 
 ![Dating App Start Screenshot](images/dating_app_start_screenshot.png)
 

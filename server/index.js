@@ -1,5 +1,5 @@
 /* ---
-This project makes use of the following sources written by [Titus Wormer](https://github.com/wooorm):
+This project makes use of the following sources provided by [Titus Wormer](https://github.com/wooorm):
 * [plain-server](https://github.com/cmda-be/course-17-18/tree/master/examples/plain-server)
 * [express-server](https://github.com/cmda-be/course-17-18/tree/master/examples/express-server)
 * [mysql-server](https://github.com/cmda-be/course-17-18/tree/master/examples/mysql-server)

@@ -8,7 +8,6 @@ This is the repo for my assessment 2 project where I made a dynamic website usin
 * [To Do](#to-do)
 * [Description](#description)
 * [Installing](#installing)
-* [Database](#database)
 * [Sources](#sources)
 * [Licence](#licence)
 
@@ -103,7 +102,7 @@ CREATE TABLE IF NOT EXISTS users (
 ### Structure
 
 ## Sources
-This project makes use of the following sources written by [Titus Wormer](https://github.com/wooorm):
+This project makes use of the following sources by [Titus Wormer](https://github.com/wooorm):
 * [plain-server](https://github.com/cmda-be/course-17-18/tree/master/examples/plain-server)
 * [express-server](https://github.com/cmda-be/course-17-18/tree/master/examples/express-server)
 * [mysql-server](https://github.com/cmda-be/course-17-18/tree/master/examples/mysql-server)

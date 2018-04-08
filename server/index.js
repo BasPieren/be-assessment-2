@@ -76,14 +76,14 @@ function start(req, res) {
 // When the browser calls for '/sign-up', send back sign-up.ejs
 function signupForm(req, res) {
   // Connect to the database with done as callback
-  connection.query('SELECT * FROM users', done)
+  connection.query('SELECT * FROM users', done);
 
   function done(err, data) {
     if (err) {
       next(err)
     } else {
       // Render the sign-up.ejs file with the data from the database
-      res.render('sign-up.ejs', {data: data})
+      res.render('sign-up.ejs', {data: data});
     }
   }
 }
@@ -111,22 +111,22 @@ function signup(req, res, next) {
     return res.status(400).send(
       'Je wachtwoord moet tussen de ' + min +
       ' en ' + max + ' karakters zijn'
-    )
+    );
   }
 
   // Connect to the database and check if the username exists
-  connection.query('SELECT * FROM users WHERE username = ?', username, done)
+  connection.query('SELECT * FROM users WHERE username = ?', username, done);
 
   // If it doesn't, carry out the following function
   function done(err, data) {
     if (err) {
-      next(err)
+      next(err);
     } else if (data.length === 0) {
       // If there is no data hash the password and carry out the onhash callback
-      argon2.hash(password).then(onhash, next)
+      argon2.hash(password).then(onhash, next);
     } else {
       // If the username all ready exists send back an error
-      res.status(409).send('Gebruikersnaam is al in gebruik')
+      res.status(409).send('Gebruikersnaam is al in gebruik');
     }
   }
 
@@ -141,16 +141,16 @@ function signup(req, res, next) {
       email:email,
       hash: hash
     },
-      oninsert)
+      oninsert);
 
     // When all the information is saved start this function
     function oninsert(err) {
       if (err) {
-        next(err)
+        next(err);
       } else {
         // Save the username inside the current session and redirect the user to the dashboard
         req.session.user = {username: username};
-        res.redirect('dashboard')
+        res.redirect('dashboard');
       }
     }
   }
@@ -159,14 +159,14 @@ function signup(req, res, next) {
 // When the browser calls for '/log-in', send back log-in.ejs
 function loginForm(req, res) {
   // Connect to the database with done as callback
-  connection.query('SELECT * FROM users', done)
+  connection.query('SELECT * FROM users', done);
 
   function done(err, data) {
     if (err) {
-      next(err)
+      next(err);
     } else {
       // Render the log-in.ejs file with the data from the database
-      res.render('log-in.ejs', {data: data, user: req.session.user})
+      res.render('log-in.ejs', {data: data, user: req.session.user});
     }
   }
 }
@@ -178,29 +178,29 @@ function login(req, res, next) {
   var password = req.body.password;
 
   // Connect to the database and check if the username exists then start the done callback
-  connection.query('SELECT * FROM users WHERE username = ?', username, done)
+  connection.query('SELECT * FROM users WHERE username = ?', username, done);
 
   function done(err, data) {
     var user = data && data[0];
 
     if (err) {
-      next(err)
+      next(err);
     } else if (user) {
       // If the username exists start to verify the given password with saved password and carry out the onverify callback
-      argon2.verify(user.hash, password).then(onverify, next)
+      argon2.verify(user.hash, password).then(onverify, next);
     } else {
       // If the username doesn't exists send back an error
-      res.status(401).send('Username does not exist')
+      res.status(401).send('Username does not exist');
     }
 
     function onverify(match) {
       if (match) {
         // Save the username inside the current session and redirect the user to the dashboard
         req.session.user = {username: username};
-        res.redirect('dashboard')
+        res.redirect('dashboard');
       } else {
         // If the password if incorrect send back an error
-        res.status(401).send('Password incorrect')
+        res.status(401).send('Password incorrect');
       }
     }
   }
@@ -209,14 +209,14 @@ function login(req, res, next) {
 // When the browser calls for '/dashboard', send back dashboard.ejs
 function dashboard(req, res, next) {
   // Connect to the database with done as callback
-  connection.query('SELECT * FROM users', done)
+  connection.query('SELECT * FROM users', done);
 
   function done(err, data) {
     if (err) {
-      next(err)
+      next(err);
     } else {
       // Render the dashboard.ejs file with the data from the database
-      res.render('dashboard.ejs', {data: data, user: req.session.user})
+      res.render('dashboard.ejs', {data: data, user: req.session.user});
     }
   }
 }
@@ -227,13 +227,13 @@ function profile(req, res, next) {
   var id = req.params.id;
 
   // Connect to the database and check if the id exists then start the done callback
-  connection.query('SELECT * FROM users WHERE id = ?', id, done)
+  connection.query('SELECT * FROM users WHERE id = ?', id, done);
 
   function done(err, data) {
     if (err) {
-      next(err)
+      next(err);
     } else if (data.length === 0) {
-      next()
+      next();
     } else {
       // If the id exists render profile.ejs with the associated information of the user
       res.render('profile.ejs', {data: data[0], user: req.session.user});
@@ -245,7 +245,7 @@ function profile(req, res, next) {
 function logout(req, res, next) {
   req.session.destroy(function (err) {
     if (err) {
-      next(err)
+      next(err);
     } else {
       res.redirect('/');
     }

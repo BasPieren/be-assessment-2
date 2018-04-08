@@ -5,7 +5,7 @@
   <section>
 
     <% if (user) { %>
-      <a class="default_button" href=/profile>Profiel</a>
+      <a class="default_button" href="/:id">Profiel</a>
       <a class="default_button button_color_blue" href=/log-out>Logout</a>
     <% } %>
 
@@ -17,9 +17,13 @@
 
 <section>
 
-  <h2>Dashboard</h2>
   <% if (user) { %>
-    <p>Welkom <%= user.username %>!</p>
+    <h2>Dashboard | <%= user.username %></h2>
+  <% } %>
+
+  <% for (var index = 0; index < data.length; index++) { %>
+    <h3><a href="/<%= data[index].id %>"><%= data[index].username %></a></h3>
+    <p><%= data[index].description %></p>
   <% } %>
 
 </section>

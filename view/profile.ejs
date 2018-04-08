@@ -7,7 +7,7 @@
   <section>
 
     <% if (user) { %>
-      <a class="default_button" href=/profile>Profiel</a>
+      <a class="default_button" href=/:id>Profiel</a>
       <a class="default_button button_color_blue" href=/log-out>Logout</a>
     <% } %>
 
@@ -21,12 +21,10 @@
 
   <h2>Profiel</h2>
 
-  <% if (user) { %>
-    <img src="/upload/<%= user.picture %>" alt="Profile picture">
-    <p><span>Naam:</span> <%= user.username %></p>
-    <p><span>Leeftijd:</span> <%= user.age %></p>
-    <p><span>Omschrijving:</span> <%= user.description %></p>
-  <% } %>
+    <img src="/upload/<%= data.picture %>" alt="Profile picture">
+    <p><span>Naam:</span> <%= data.username %></p>
+    <p><span>Leeftijd:</span> <%= data.age %></p>
+    <p><span>Omschrijving:</span> <%= data.description %></p>
 
 </section>
 

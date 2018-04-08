@@ -58,10 +58,10 @@ At the dashboard users will find all their potential matches based on their info
 > Dating app dashboard page
 
 ### Profile
-At the profile page users can see their own profile information. They also have the ability to alter the information.
+At the profile page users can see their own profile information. They also have the ability to alter their own information.
 
 ![Dating App Start Screenshot](images/dating_app_profile_screenshot.png)
-> Dating app starting page
+> Dating app profile page
 
 ## Installing
 To install this application enter the following into your _terminal_:

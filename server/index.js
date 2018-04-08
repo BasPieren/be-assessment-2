@@ -53,7 +53,7 @@ express()
   .listen(3000)
 
 /* ---
-START OF SOURCES:
+START USE OF SOURCES:
 https://github.com/cmda-be/course-17-18/tree/master/examples/mysql-server
 https://docs.google.com/presentation/d/1BHMqO9UV5ePt29n8cnjaznvye8Gu_HrdzhzC3h5rgOI/edit#slide=id.g2922825c54_2_58
 --- */
@@ -253,7 +253,7 @@ function logout(req, res, next) {
 }
 
 /* ---
-END OF SOURCES:
+END USE OF SOURCES:
 https://github.com/cmda-be/course-17-18/tree/master/examples/mysql-server
 https://docs.google.com/presentation/d/1BHMqO9UV5ePt29n8cnjaznvye8Gu_HrdzhzC3h5rgOI/edit#slide=id.g2922825c54_2_58
 --- */

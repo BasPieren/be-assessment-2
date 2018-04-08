@@ -1,7 +1,10 @@
 /* ---
-Sources used for this project:
-https://github.com/cmda-be/course-17-18/tree/master/examples/mysql-server
-https://docs.google.com/presentation/d/1BHMqO9UV5ePt29n8cnjaznvye8Gu_HrdzhzC3h5rgOI/edit#slide=id.g2922825c54_2_58
+This project makes use of the following sources written by [Titus Wormer](https://github.com/wooorm):
+* [plain-server](https://github.com/cmda-be/course-17-18/tree/master/examples/plain-server)
+* [express-server](https://github.com/cmda-be/course-17-18/tree/master/examples/express-server)
+* [mysql-server](https://github.com/cmda-be/course-17-18/tree/master/examples/mysql-server)
+* [Backend Development Lecture 6](https://docs.google.com/presentation/d/1BHMqO9UV5ePt29n8cnjaznvye8Gu_HrdzhzC3h5rgOI/edit#slide=id.g2922825c54_2_58)
+* [Backend Development Lab 8](https://docs.google.com/presentation/d/17acFykwNaTmiiPZJElAqBfz-9XlvuRf6KNU2t-Bm5w0/edit#slide=id.g2922825c54_2_58)
 --- */
 
 // Loads in all the dependencies
@@ -54,8 +57,11 @@ express()
 
 /* ---
 START USE OF SOURCES:
-https://github.com/cmda-be/course-17-18/tree/master/examples/mysql-server
-https://docs.google.com/presentation/d/1BHMqO9UV5ePt29n8cnjaznvye8Gu_HrdzhzC3h5rgOI/edit#slide=id.g2922825c54_2_58
+* [plain-server](https://github.com/cmda-be/course-17-18/tree/master/examples/plain-server)
+* [express-server](https://github.com/cmda-be/course-17-18/tree/master/examples/express-server)
+* [mysql-server](https://github.com/cmda-be/course-17-18/tree/master/examples/mysql-server)
+* [Backend Development Lecture 6](https://docs.google.com/presentation/d/1BHMqO9UV5ePt29n8cnjaznvye8Gu_HrdzhzC3h5rgOI/edit#slide=id.g2922825c54_2_58)
+* [Backend Development Lab 8](https://docs.google.com/presentation/d/17acFykwNaTmiiPZJElAqBfz-9XlvuRf6KNU2t-Bm5w0/edit#slide=id.g2922825c54_2_58)
 --- */
 
 // When the browser calls for '/', send back start.ejs
@@ -253,7 +259,5 @@ function logout(req, res, next) {
 }
 
 /* ---
-END USE OF SOURCES:
-https://github.com/cmda-be/course-17-18/tree/master/examples/mysql-server
-https://docs.google.com/presentation/d/1BHMqO9UV5ePt29n8cnjaznvye8Gu_HrdzhzC3h5rgOI/edit#slide=id.g2922825c54_2_58
+END USE OF SOURCES
 --- */

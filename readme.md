@@ -76,6 +76,8 @@ npm install
 Then to start the server enter the following:  
 ```
 node server
+// or
+nodemon server
 ```
 
 ### Database

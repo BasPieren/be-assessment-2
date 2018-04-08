@@ -26,6 +26,9 @@ This website is a dating app where users who are ill for a long period of time c
 ### Start
 The starting page is the first screen users will see. Here they have the choice to create an account or login to an existing one.
 
+![Dating App Start Screenshot](images/dating_app_start_screenshot.png)
+> Dating app starting page
+
 ### Sign up
 Add the sign up page users can create their own account. They need to fill in the following information:
 
@@ -39,14 +42,26 @@ Add the sign up page users can create their own account. They need to fill in th
 
 This information is used during the matching process between different user. All the information is also saved into a local MySQL database.
 
+![Dating App Start Screenshot](images/dating_app_aanmelden_screenshot.png)
+> Dating app sign up page
+
 ### Login
 Add the login screen users can login with there own username and password that they created during the sign up process.
+
+![Dating App Start Screenshot](images/dating_app_login_screenshot.png)
+> Dating app login page
 
 ### Dashboard
 At the dashboard users will find all their potential matches based on their information. They can also navigate to their own profile and logout.
 
+![Dating App Start Screenshot](images/dating_app_dashboard_screenshot.png)
+> Dating app dashboard page
+
 ### Profile
 At the profile page users can see their own profile information. They also have the ability to alter the information.
+
+![Dating App Start Screenshot](images/dating_app_profile_screenshot.png)
+> Dating app starting page
 
 ## Installing
 To install this application enter the following into your _terminal_:

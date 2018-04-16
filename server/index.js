@@ -66,32 +66,12 @@ START USE OF SOURCES:
 
 // When the browser calls for '/', send back start.ejs
 function start(req, res) {
-  // Connect to the database with done as callback
-  connection.query('SELECT * FROM users', done);
-
-  function done(err, data) {
-    if (err) {
-      next(err);
-    } else {
-      // Render the start.ejs file with the data from the database
-      res.render('start.ejs', {data: data});
-    }
-  }
+  res.render('start.ejs');
 }
 
 // When the browser calls for '/sign-up', send back sign-up.ejs
 function signupForm(req, res) {
-  // Connect to the database with done as callback
-  connection.query('SELECT * FROM users', done);
-
-  function done(err, data) {
-    if (err) {
-      next(err)
-    } else {
-      // Render the sign-up.ejs file with the data from the database
-      res.render('sign-up.ejs', {data: data});
-    }
-  }
+  res.render('sign-up.ejs', {data: data});
 }
 
 // When the signup form carries out its post action, start this function

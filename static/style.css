@@ -174,3 +174,20 @@ main > section > form > button{
 main > section > form > button:hover{
   cursor: pointer;
 }
+
+.button_remove{
+  margin: 1em 0 0 0;
+  padding: 1em 2em;
+  background-color: #d70e0e;
+  font-family: 'Roboto', sans-serif;
+  color: #ffffff;
+  font-size: 0.8em;
+  font-weight: 500;
+  border: none;
+  transition: all 0.3s;
+}
+
+.button_remove:hover{
+  background-color: #c20b0b;
+  cursor: pointer;
+}

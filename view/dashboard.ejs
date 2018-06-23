@@ -23,6 +23,7 @@
 
   <% for (var index = 0; index < data.length; index++) { %>
     <h3><a href="/<%= data[index].id %>"><%= data[index].username %></a></h3>
+    <p><%= data[index].hospital %></p>
     <p><%= data[index].description %></p>
   <% } %>
 

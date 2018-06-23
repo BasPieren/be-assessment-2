@@ -53,6 +53,8 @@ express()
   .post('/sign-up', upload.single('cover'), signup)
   .post('/log-in', login)
 
+  .delete('/:id', remove)
+
   .listen(3000)
 
 /* ---
@@ -71,7 +73,7 @@ function start(req, res) {
 
 // When the browser calls for '/sign-up', send back sign-up.ejs
 function signupForm(req, res) {
-  res.render('sign-up.ejs', {data: data});
+  res.render('sign-up.ejs');
 }
 
 // When the signup form carries out its post action, start this function
@@ -80,6 +82,8 @@ function signup(req, res, next) {
   var username = req.body.username;
   var age = req.body.age;
   var gender = req.body.gender;
+  var hospital = req.body.hospital;
+  var day = req.body.day;
   var description = req.body.description;
   var picture = req.file ? req.file.filename : null;
   var email = req.body.email;
@@ -122,6 +126,8 @@ function signup(req, res, next) {
       username: username,
       age:age,
       gender:gender,
+      hospital:hospital,
+      day:day,
       description:description,
       picture:picture,
       email:email,
@@ -144,17 +150,7 @@ function signup(req, res, next) {
 
 // When the browser calls for '/log-in', send back log-in.ejs
 function loginForm(req, res) {
-  // Connect to the database with done as callback
-  connection.query('SELECT * FROM users', done);
-
-  function done(err, data) {
-    if (err) {
-      next(err);
-    } else {
-      // Render the log-in.ejs file with the data from the database
-      res.render('log-in.ejs', {data: data, user: req.session.user});
-    }
-  }
+    res.render('log-in.ejs');
 }
 
 // When the login form carries out its action, start this function
@@ -236,6 +232,20 @@ function logout(req, res, next) {
       res.redirect('/');
     }
   })
+}
+
+function remove(req, res, next) {
+  var id = req.params.id;
+
+  connection.query('DELETE FROM users WHERE id = ?', id, done);
+
+  function done(err) {
+    if (err) {
+      next(err)
+    } else {
+      res.json({status: 'ok'});
+    }
+  }
 }
 
 /* ---

@@ -1,4 +1,4 @@
-<% include head.ejs %>
+<% include components/head.ejs %>
 
 <header>
 
@@ -7,8 +7,9 @@
     <% if (user) { %>
       <p>Hallo <%= user.username %></p>
       <img src="/upload/<%= user.picture %>" alt="Profile picture">
-      <!-- <img src="/upload/<%= data.picture %>" alt="Profile picture"> -->
       <a class="default_button button_color_blue" href=/log-out>Logout</a>
+    <% } else { %>
+      <p>Welkom</p>
     <% } %>
 
   </section>

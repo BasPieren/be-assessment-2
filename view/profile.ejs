@@ -1,8 +1,8 @@
-<% include head.ejs %>
+<% include components/head.ejs %>
 
 <header>
 
-  <a href="/dashboard">Terug</a>
+  <a href="/dashboard">Dashboard</a>
 
   <section>
 
@@ -10,6 +10,8 @@
       <p>Hallo <%= user.username %></p>
       <img src="/upload/<%= user.picture %>" alt="Profile picture">
       <a class="default_button button_color_blue" href=/log-out>Logout</a>
+    <% } else { %>
+      <p>Welkom</p>
     <% } %>
 
   </section>

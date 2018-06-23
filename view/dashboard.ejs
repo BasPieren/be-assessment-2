@@ -15,19 +15,24 @@
 
 <main>
 
-<section>
+  <section class="dashboard">
 
-  <% if (user) { %>
-    <h2>Dashboard | <%= user.username %></h2>
-  <% } %>
+    <% if (user) { %>
+      <h2>Welkom <%= user.username %></h2>
+    <% } %>
 
-  <% for (var index = 0; index < data.length; index++) { %>
-    <h3><a href="/<%= data[index].id %>"><%= data[index].username %></a></h3>
-    <p><%= data[index].hospital %></p>
-    <p><%= data[index].description %></p>
-  <% } %>
+    <% for (var index = 0; index < data.length; index++) { %>
+      <article class="dashboard_item">
 
-</section>
+        <img src="/upload/<%= data[index].picture %>" alt="Profile picture">
+        <h3><%= data[index].username %></h3>
+        <p><%= data[index].description %></p>
+
+        <a href="/<%= data[index].id %>" class="default_button button_color_pink">Bekijk Profiel</a>
+      </article>
+    <% } %>
+
+  </section>
 
 </main>
 

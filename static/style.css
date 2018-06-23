@@ -175,6 +175,47 @@ main > section > form > button:hover{
   cursor: pointer;
 }
 
+/* ------------- DASHBOARD ------------- */
+
+.dashboard{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 30px;
+  width: auto;
+}
+
+.dashboard > h2{
+  grid-column-start: 1;
+  grid-column-end: end;
+}
+
+.dashboard_item{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 20px;
+  text-align: center;
+  background-color: #f1f1f1;
+}
+
+.dashboard_item > img{
+  display: block;
+  margin: 0 auto;
+  max-width: 150px;
+  max-height: 150px;
+  width: auto;
+  height: auto;
+  border-radius: 50%;
+}
+
+.dashboard_item > h3{
+  margin: 15px 0 0 0;
+}
+
+.dashboard_item > p{
+  margin: 5px 0 10px 0;
+}
+
 .button_remove{
   margin: 1em 0 0 0;
   padding: 1em 2em;

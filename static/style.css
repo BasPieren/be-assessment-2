@@ -8,7 +8,7 @@ body{
 }
 
 h2{
-  margin: 0 0 1em 0;
+  margin: 0 0 0.2em 0;
   padding: 0;
   font-family: 'Roboto', sans-serif;
   font-size: 2em;
@@ -39,6 +39,7 @@ p > span {
   display: block;
   margin: 0.5em 0;
   padding: 1em 2em;
+  max-width: 100px;
   font-family: 'Roboto', sans-serif;
   color: #ffffff;
   font-size: 0.8em;
@@ -108,7 +109,7 @@ header > section{
   align-items: center;
   margin: 0 0 0 auto;
   padding: 0;
-  width: 12em;
+  width: 20em;
 }
 
 header > section > a{
@@ -134,26 +135,16 @@ main{
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin: 0;
+  margin: 0 auto;
   padding: 2em;
-}
-
-main > section > p{
-  margin: 1em 0;
+  max-width: 800px;
 }
 
 main > section {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  margin: 0 auto;
-  width: 21em;
-}
-
-main > section > img{
-  max-width: 100%;
-  width: auto;
-  height: auto;
+  margin: 2.5em 0 0 0;
 }
 
 main > section > form > label{
@@ -179,7 +170,7 @@ main > section > form > button:hover{
 
 .dashboard{
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 30px;
   width: auto;
 }
@@ -193,9 +184,9 @@ main > section > form > button:hover{
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  padding: 20px;
+  padding: 1.5em;
   text-align: center;
-  background-color: #f1f1f1;
+  border: 1px solid #f1f1f1;
 }
 
 .dashboard_item > img{
@@ -209,22 +200,44 @@ main > section > form > button:hover{
 }
 
 .dashboard_item > h3{
-  margin: 15px 0 0 0;
+  margin: 1em 0 0 0;
 }
 
 .dashboard_item > p{
-  margin: 5px 0 10px 0;
+  margin: 0 0 2em 0;
+  font-size: 12px;
+}
+
+.dashboard_item > a{
+  margin: 0 auto;
+}
+
+/* ------------- PROFILE ------------- */
+
+.profile > img{
+  margin: 0 0 2.5em 0;
+  max-width: 250px;
+  max-height: 250px;
+  width: auto;
+  height: auto;
+  border-radius: 50%;
+}
+
+.profile > p{
+  margin: 0 0 1em 0;
 }
 
 .button_remove{
   margin: 1em 0 0 0;
   padding: 1em 2em;
+  width: fit-content;
   background-color: #d70e0e;
   font-family: 'Roboto', sans-serif;
   color: #ffffff;
   font-size: 0.8em;
   font-weight: 500;
   border: none;
+  border-radius: 3em;
   transition: all 0.3s;
 }
 

@@ -5,7 +5,9 @@
   <section>
 
     <% if (user) { %>
-      <a class="default_button" href="/<%= data.id %>">Profiel</a>
+      <p>Hallo <%= user.username %></p>
+      <img src="/upload/<%= user.picture %>" alt="Profile picture">
+      <!-- <img src="/upload/<%= data.picture %>" alt="Profile picture"> -->
       <a class="default_button button_color_blue" href=/log-out>Logout</a>
     <% } %>
 
@@ -15,18 +17,17 @@
 
 <main>
 
-  <section class="dashboard">
+  <h2>Dashboard</h2>
+  <p>Potentiele matches</p>
 
-    <% if (user) { %>
-      <h2>Welkom <%= user.username %></h2>
-    <% } %>
+  <section class="dashboard">
 
     <% for (var index = 0; index < data.length; index++) { %>
       <article class="dashboard_item">
 
         <img src="/upload/<%= data[index].picture %>" alt="Profile picture">
-        <h3><%= data[index].username %></h3>
-        <p><%= data[index].description %></p>
+        <h3><%= data[index].username %>, <%= data[index].age %></h3>
+        <p><%= data[index].hospital %></p>
 
         <a href="/<%= data[index].id %>" class="default_button button_color_pink">Bekijk Profiel</a>
       </article>

@@ -7,6 +7,8 @@
   <section>
 
     <% if (user) { %>
+      <p>Hallo <%= user.username %></p>
+      <img src="/upload/<%= user.picture %>" alt="Profile picture">
       <a class="default_button button_color_blue" href=/log-out>Logout</a>
     <% } %>
 
@@ -16,16 +18,15 @@
 
 <main>
 
-<section>
-
   <h2>Profiel</h2>
+  <p>Het profiel van <%= data.username %></p>
+
+<section class="profile">
 
     <img src="/upload/<%= data.picture %>" alt="Profile picture">
-    <p><span>Naam:</span> <%= data.username %></p>
-    <p><span>Leeftijd:</span> <%= data.age %></p>
-    <p><span>Ziekenhuis:</span> <%= data.hospital %></p>
-    <p><span>Bezoekdag(en):</span> <%= data.day %></p>
-    <p><span>Omschrijving:</span> <%= data.description %></p>
+    <h3><%= data.username %>, <%= data.age %></h3>
+    <p><%= data.hospital %> op <%= data.day %></p>
+    <p><%= data.description %></p>
 
     <% if (user) { %>
       <button id="js-remove" data-id="<%= data.id %>" class="button_remove">Remove</button>

@@ -49,9 +49,12 @@ express()
   .get('/log-out', logout)
   .get('/:id', profile)
   .get('/dashboard', dashboard)
+  .get('/edit', editFrom)
 
   .post('/sign-up', upload.single('cover'), signup)
   .post('/log-in', login)
+
+  .put('/edit', edit)
 
   .delete('/:id', remove)
 
@@ -244,6 +247,67 @@ function remove(req, res, next) {
       next(err)
     } else {
       res.json({status: 'ok'});
+    }
+  }
+}
+
+function editFrom(req, res) {
+    res.render('edit.ejs');
+}
+
+// When the edit form carries out its put action, start this function
+function edit(req, res, next) {
+  // Look up all the information fields the user is gonna fill in and store them in variables.
+  var username = req.body.username;
+  var age = req.body.age;
+  var gender = req.body.gender;
+  var hospital = req.body.hospital;
+  var day = req.body.day;
+  var description = req.body.description;
+  var picture = req.file ? req.file.filename : null;
+  var email = req.body.email;
+  var password = req.body.password;
+
+  // Connect to the database and check if the username exists
+  connection.query('SELECT * FROM users WHERE username = ?', username, done);
+
+  // If it doesn't, carry out the following function
+  function done(err, data) {
+    if (err) {
+      next(err);
+    } else if (data.length === 1) {
+      // If there is no data hash the password and carry out the onhash callback
+      argon2.hash(password).then(onhash, next);
+    } else {
+      // If the username all ready exists send back an error
+      res.status(409).send('Gebruikersnaam is al in gebruik');
+    }
+  }
+
+  function onhash(hash) {
+    // Save all the new user information inside the database
+    connection.query('UPDATE users SET *', {
+      username: username,
+      age:age,
+      gender:gender,
+      hospital:hospital,
+      day:day,
+      description:description,
+      picture:picture,
+      email:email,
+      hash: hash
+    },
+      oninsert);
+
+    // When all the information is saved start this function
+    function oninsert(err) {
+      if (err) {
+        next(err);
+      } else {
+        // Save the username inside the current session and redirect the user to the dashboard
+        req.session.user = {username: username, picture:picture};
+        res.redirect('dashboard');
+      }
     }
   }
 }

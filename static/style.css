@@ -109,24 +109,17 @@ header > section{
   align-items: center;
   margin: 0 0 0 auto;
   padding: 0;
-  width: 20em;
+  width: 16em;
 }
 
-header > section > a{
+header > section > a > img{
+  display: block;
   margin: 0;
-  padding: 1em 2em;
-  font-family: 'Roboto', sans-serif;
-  color: #ffffff;
-  font-size: 0.8em;
-  font-weight: 300;
-  text-decoration: none;
-  background-color: #FF2E76;
-  border-radius: 3em;
-  transition: all 0.3s;
-}
-
-header > section > a:hover{
-  background-color: #d52360;
+  max-width: 40px;
+  max-height: 40px;
+  width: auto;
+  height: auto;
+  border-radius: 50%;
 }
 
 /* ------------- MAIN ------------- */
@@ -243,5 +236,24 @@ main > section > form > button:hover{
 
 .button_remove:hover{
   background-color: #c20b0b;
+  cursor: pointer;
+}
+
+.button_edit{
+  margin: 1em 0 0 0;
+  padding: 1em 2em;
+  width: fit-content;
+  background-color: #334371;
+  font-family: 'Roboto', sans-serif;
+  color: #ffffff;
+  font-size: 0.8em;
+  font-weight: 500;
+  border: none;
+  border-radius: 3em;
+  transition: all 0.3s;
+}
+
+.button_edit:hover{
+  background-color: #243053;
   cursor: pointer;
 }

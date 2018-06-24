@@ -8,7 +8,7 @@
 
     <% if (user) { %>
       <p>Hallo <%= user.username %></p>
-      <img src="/upload/<%= user.picture %>" alt="Profile picture">
+      <a href="/<%= user.id %>"><img src="/upload/<%= user.picture %>" alt="Profile picture"></a>
       <a class="default_button button_color_blue" href=/log-out>Logout</a>
     <% } else { %>
       <p>Welkom</p>
@@ -30,9 +30,8 @@
     <p><%= data.hospital %> op <%= data.day %></p>
     <p><%= data.description %></p>
 
-    <% if (user) { %>
-      <button id="js-remove" data-id="<%= data.id %>" class="button_remove">Remove</button>
-    <% } %>
+    <button id="js-edit" data-id="<%= data.id %>" class="button_edit">Aanpassen</button>
+    <button id="js-remove" data-id="<%= data.id %>" class="button_remove">Verwijderen</button>
 
 </section>
 

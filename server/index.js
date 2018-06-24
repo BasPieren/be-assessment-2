@@ -141,7 +141,7 @@ function signup(req, res, next) {
         next(err);
       } else {
         // Save the username inside the current session and redirect the user to the dashboard
-        req.session.user = {username: username};
+        req.session.user = {username: username, picture:picture};
         res.redirect('dashboard');
       }
     }
